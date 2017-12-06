@@ -24,8 +24,8 @@ import math as math
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    #run_test_sum_more_cosines()
-    #run_test_count_sines_from()
+    run_test_sum_more_cosines()
+    run_test_count_sines_from()
     run_test_count_sines_vs_cosines()
 
 
@@ -97,8 +97,8 @@ def sum_more_cosines(m, n):
     """
 
     total = 0
-    for k in range(m, n+1):
-        total = total + math.cos(k)
+    for k in range(n - m + 1):
+        total = total + math.cos(k + m)
     return total
 
 
@@ -177,8 +177,8 @@ def count_sines_from(m, n):
     """
 
     count = 0
-    for k in range(m, n+1):
-        if math.sin(k) < 0.5:
+    for k in range(n - m + 1):
+        if math.sin(k + m) < 0.5:
             count = count + 1
     return(count)
 
@@ -257,8 +257,8 @@ def count_sines_vs_cosines(m):
     """
 
     count = 0
-    for k in range(-m, (m+1)):
-        if math.sin(k) > math.cos(k):
+    for k in range((2 * m) + 1):
+        if math.sin(k - m) > math.cos(k - m):
             count = count + 1
     return(count)
 

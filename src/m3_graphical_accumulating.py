@@ -27,8 +27,8 @@ import rosegraphics as rg
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_draw_parallel_lines()
-    #run_test_draw_lines()
+    #run_test_draw_parallel_lines()
+    run_test_draw_lines()
 
 
 def run_test_draw_parallel_lines():
@@ -36,7 +36,7 @@ def run_test_draw_parallel_lines():
     print()
     print('--------------------------------------------------')
     print('Testing the  draw_parallel_lines  function:')
-    print('  See the graphics windows that pop up.')
+    print('  See the graphics windows that pops up.')
     print('--------------------------------------------------')
 
     # ------------------------------------------------------------------
@@ -95,18 +95,21 @@ def draw_parallel_lines(n, point, length, window):
       :type length: int
       :type window: rg.RoseWindow
     """
-    x = point
-    for k in range(n+1):
-        line = rg.Line(point, length)
-        x = x - 30
-    window.render(line)
+    x = point.x
+    y = point.y
+    for bitch in range(n+1):
+        point = rg.Point(x, y)
+        line = rg.Line(point, rg.Point(x + length, y))
+        y = y + 30
+        line.attach_to(window)
+    window.render()
 
 
 
 
 
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -171,10 +174,20 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
 
+    x = point.x
+    y = point.y
+    yf = y + 100
+    for k in range(n):
+        point = rg.Point(x, y)
+        yf = yf - 200//(n+1)
+        line = rg.Line(point, rg.Point((x + 100), yf))
+        line.attach_to(window)
+    window.render()
+
 
 
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
